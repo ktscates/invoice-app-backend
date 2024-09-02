@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 const allowedOrigins = [
   "http://localhost:4200",
-  "https://ktscates-invoice-app.netlify.app/",
+  "https://ktscates-invoice-app.netlify.app",
 ];
 
 app.use(
