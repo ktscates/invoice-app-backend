@@ -6,7 +6,22 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({ origin: "http://localhost:4200" }));
+const allowedOrigins = [
+  "http://localhost:4200",
+  "https://ktscates-invoice-app.netlify.app/",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 app.use(express.json());
 
 let invoices;
